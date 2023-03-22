@@ -198,7 +198,10 @@ class SocialSharePlugin : FlutterPlugin, ActivityAware, MethodCallHandler,
     val shareDialog = ShareDialog(activity)
     shareDialog.registerCallback(callbackManager, object : FacebookCallback<Sharer.Result?> {
       override fun onSuccess(result: Sharer.Result?) {
-        channel!!.invokeMethod("onSuccess", null)
+        if(channel == null) {
+          Log.d("SocialSharePlugin", "channel is null")
+        }
+        channel!!.invokeMethod("onSuccess", "success2")
         Log.d("SocialSharePlugin", "Sharing successfully done.")
       }
 
