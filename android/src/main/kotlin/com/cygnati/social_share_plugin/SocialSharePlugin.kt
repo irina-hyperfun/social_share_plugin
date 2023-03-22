@@ -200,6 +200,8 @@ class SocialSharePlugin : FlutterPlugin, ActivityAware, MethodCallHandler,
       override fun onSuccess(result: Sharer.Result?) {
         if(channel == null) {
           Log.d("SocialSharePlugin", "channel is null")
+        } else{
+          Log.d("SocialSharePlugin", "channel is not null!")
         }
         channel!!.invokeMethod("onSuccess", "success2")
         Log.d("SocialSharePlugin", "Sharing successfully done.")

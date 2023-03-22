@@ -68,8 +68,11 @@ class SocialSharePlugin {
     OnErrorHandler? onError,
   }) async {
     _channel.setMethodCallHandler((call) {
+      print('inaaaaaa handler');
+      print('SocialSharePlugin shareToFeedFacebookLink call.method: ${call.method}');
       switch (call.method) {
         case "onSuccess":
+          print('inaaaaaa onsuccess');
           return onSuccess != null ? onSuccess(call.arguments) : Future.value();
         case "onCancel":
           return onCancel != null ? onCancel() : Future.value();
