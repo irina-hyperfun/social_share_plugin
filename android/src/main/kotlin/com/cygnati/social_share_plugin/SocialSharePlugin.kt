@@ -60,6 +60,7 @@ class SocialSharePlugin : FlutterPlugin, ActivityAware, MethodCallHandler,
   }
 
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?): Boolean {
+    print("activity result inaaa")
     if (requestCode == TWITTER_REQUEST_CODE) {
       if (resultCode == Activity.RESULT_OK) {
         Log.d("SocialSharePlugin", "Twitter share done.")
@@ -169,12 +170,15 @@ class SocialSharePlugin : FlutterPlugin, ActivityAware, MethodCallHandler,
     val shareDialog = ShareDialog(activity)
     shareDialog.registerCallback(callbackManager, object : FacebookCallback<Sharer.Result?> {
       override fun onSuccess(result: Sharer.Result?) {
-        channel!!.invokeMethod("onSuccess", null)
+        if(channel == null) {
+          Log.d("SocialSharePlugin", "channel is null")
+        }
+        channel!!.invokeMethod("onSuccess", "success1")
         Log.d("SocialSharePlugin", "Sharing successfully done.")
       }
 
       override fun onCancel() {
-        channel!!.invokeMethod("onCancel", null)
+        channel!!.invokeMethod("onCancel", "cancel1")
         Log.d("SocialSharePlugin", "Sharing cancelled.")
       }
 
