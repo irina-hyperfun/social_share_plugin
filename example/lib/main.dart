@@ -56,15 +56,6 @@ class _MyAppState extends State<MyApp> {
         body: Column(
           children: [
             Text('Running on: $_platformVersion\n'),
-            TextButton(
-                onPressed: (){
-                  SocialSharePlugin.shareToFeedFacebookLink(
-                      url: 'youtube.com',
-                      onSuccess: (postId) async{
-                        print('success');
-                      });
-                },
-                child: Text('lalala')),
           ],
         ),
       ),
