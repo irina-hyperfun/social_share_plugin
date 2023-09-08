@@ -64,20 +64,20 @@ class SocialSharePlugin : FlutterPlugin, ActivityAware, MethodCallHandler,
     if (requestCode == TWITTER_REQUEST_CODE) {
       if (resultCode == Activity.RESULT_OK) {
         Log.d("SocialSharePlugin", "Twitter share done.")
-        channel!!.invokeMethod("onSuccess", null)
+        channel!!.invokeMethod("onSuccess", "success")
       } else if (resultCode == Activity.RESULT_CANCELED) {
         Log.d("SocialSharePlugin", "Twitter cancelled.")
-        channel!!.invokeMethod("onCancel", null)
+        channel!!.invokeMethod("onCancel", "cancel")
       }
       return true
     }
     if (requestCode == INSTAGRAM_REQUEST_CODE) {
       if (resultCode == Activity.RESULT_OK) {
         Log.d("SocialSharePlugin", "Instagram share done.")
-        channel!!.invokeMethod("onSuccess", null)
+        channel!!.invokeMethod("onSuccess", "success")
       } else {
         Log.d("SocialSharePlugin", "Instagram share failed.")
-        channel!!.invokeMethod("onCancel", null)
+        channel!!.invokeMethod("onCancel", "cancel")
       }
       return true
     }
